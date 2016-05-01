@@ -1,7 +1,7 @@
 package pa1;
 
 /** @author Rakkan Tiasakul 5810546013
- * 
+ * This class is UI for Converter program.
  */
 
 import java.awt.Dimension;
@@ -29,7 +29,9 @@ import javax.swing.JMenuItem;
 
 
 public class ConverterUI extends JFrame {
-
+	/**
+	 * Constructer as global variables
+	 */
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField2;
@@ -78,6 +80,7 @@ public class ConverterUI extends JFrame {
 		initComponents();
 	}
 
+
 	private void initComponents(){
 
 		setBounds(100, 100, 600, 100);
@@ -86,10 +89,13 @@ public class ConverterUI extends JFrame {
 		ActionListener Left = new ChooseLeftToRight();
 		ActionListener Right = new ChooseRightToLeft();
 		KeyListener convertEnter = new ConvertButtonListener();
-		ActionListener menuSelect = new ConvertChoice();
+		ActionListener menuSelect1 = new ConvertChoiceCurrency();
+		ActionListener menuSelect2 = new ConvertChoiceWeight();
+		ActionListener menuSelect3 = new ConvertChoiceArea();
+		ActionListener menuSelect4 = new ConvertChoiceLength();
 
 		menuBar = new JMenuBar();
-		
+
 		setJMenuBar(menuBar);
 
 		mnUnitType = new JMenu("Unit Type");
@@ -97,19 +103,19 @@ public class ConverterUI extends JFrame {
 
 		mnLength = new JMenuItem("Length");
 		mnUnitType.add(mnLength);
-		mnLength.addActionListener(menuSelect);
+		mnLength.addActionListener(menuSelect4);
 
 		mnWeight = new JMenuItem("Weight");
 		mnUnitType.add(mnWeight);
-		mnWeight.addActionListener(menuSelect);
+		mnWeight.addActionListener(menuSelect2);
 
 		mnArea = new JMenuItem("Area");
 		mnUnitType.add(mnArea);
-		mnArea.addActionListener(menuSelect);
+		mnArea.addActionListener(menuSelect3);
 
 		mnCurrency = new JMenuItem("Currency");
 		mnUnitType.add(mnCurrency);
-		mnCurrency.addActionListener(menuSelect);
+		mnCurrency.addActionListener(menuSelect1);
 
 		separator = new JSeparator();
 		mnUnitType.add(separator);
@@ -117,7 +123,6 @@ public class ConverterUI extends JFrame {
 		mnExit = new JMenuItem("Exit");
 		mnExit.addActionListener(new ExitMenu());
 		mnUnitType.add(mnExit);
-
 
 
 		contentPane = new JPanel();
@@ -134,8 +139,8 @@ public class ConverterUI extends JFrame {
 		UnitType utype = UnitType.Length;
 		Unit[] units = unitconverter.getUnits(utype);
 		for(Unit u : units) comboBox.addItem(u);
-		
-		
+
+
 		comboBox.addKeyListener(convertEnter);
 		contentPane.add(comboBox);
 
@@ -171,16 +176,29 @@ public class ConverterUI extends JFrame {
 		contentPane.add(rightToLeft);
 
 	}
-
-		class ExitMenu extends AbstractAction{
-			public ExitMenu(){
-				super("Exit");
-			}
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				 System.exit(0);		
-			}
+	/**
+	 * 
+	 * This class is for using to exit the UI window by clicking on "exit" in menuItem.
+	 *
+	 */
+	class ExitMenu extends AbstractAction{
+		public ExitMenu(){
+			super("Exit");
 		}
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			System.exit(0);		
+		}
+	}
+
+	/**
+	 * 
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 * @version This method implements ActionListener. Using for clicking on Left to Right button
+	 * after clicking on that button textField would be editable while textField2 would not. 
+	 * But the value after converting will be showed in textField2 instead.
+	 */
+
 	class ChooseLeftToRight implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -190,6 +208,13 @@ public class ConverterUI extends JFrame {
 			rightToLeft.setSelected(false);
 		}
 	}
+
+	/** 
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 *  @version This method implements ActionListener. Using for clicking on Right to Left button
+	 * after clicking on that button textField2 would be editable while textField would not. 
+	 * But the value after converting will be showed in textField instead.
+	 */
 
 	class ChooseRightToLeft implements ActionListener {
 		@Override
@@ -201,6 +226,10 @@ public class ConverterUI extends JFrame {
 		}
 	}
 
+	/**
+	 * @version  This method implements ActionListener, use for set textField to be ""
+	 * after clicking on clear button.
+	 */
 	class ClearButtonListener implements ActionListener{
 		public void actionPerformed (ActionEvent evt){
 			textField.setText("");
@@ -208,38 +237,61 @@ public class ConverterUI extends JFrame {
 		}
 	}
 
-	class ConvertChoice implements ActionListener{
+	class ConvertChoiceCurrency implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			comboBox.removeAllItems();
-			comboBox_2.removeAllItems();
-			if (mnCurrency.isSelected()){
+			if(mnCurrency.isSelected()){
+				comboBox.removeAllItems();
+				comboBox_2.removeAllItems();
 				UnitType utype = UnitType.Currency;
 				Unit[] units = unitconverter.getUnits(utype);
 				for(Unit u : units) comboBox.addItem(u);
 				comboBox_2.addItem(u);
+			}
+		}
+	}
 
-			}else if(mnWeight.isSelected()){
+	class ConvertChoiceWeight implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if(mnWeight.isSelected()){
+				comboBox.removeAllItems();
+				comboBox_2.removeAllItems();
 				UnitType utype = UnitType.Weight;
 				Unit[] units = unitconverter.getUnits(utype);
 				for(Unit u : units) comboBox.addItem(u);
 				comboBox_2.addItem(u);
-				
-			}else if(mnArea.isSelected()){
+			}
+		}
+	}
+
+	class ConvertChoiceArea implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if (mnArea.isSelected()){
+				comboBox.removeAllItems();
+				comboBox_2.removeAllItems();
 				UnitType utype = UnitType.Area;
 				Unit[] units = unitconverter.getUnits(utype);
 				for(Unit u : units) comboBox.addItem(u);
 				comboBox_2.addItem(u);
-			}else{
+			}
+		}
+	}
+
+	class ConvertChoiceLength implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e){
+			if (mnCurrency.isSelected()){
+				comboBox.removeAllItems();
+				comboBox_2.removeAllItems();
 				UnitType utype = UnitType.Length;
 				Unit[] units = unitconverter.getUnits(utype);
 				for(Unit u : units) comboBox.addItem(u);
 				comboBox_2.addItem(u);
-			}
-
+			} 
 		}
-
 	}
 	class ConvertButtonListener implements ActionListener, KeyListener{
 		/**
