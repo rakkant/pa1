@@ -13,8 +13,10 @@ public enum Weight implements Unit{
 	KEED ("KEED", 1),
 	GRAM ("Gram", 100),
 	KILOGRAM ("Kilogram", 1000),
-	TON("Ton", 1000000);
-	
+	TON("Ton", 1000000),
+	ONZ ("Onz",35273.96),
+	POUND("Pound", 0.002205),
+	KARAT("Karat",5);
 	/**
 	 * public property for Weight enum. It's immutable. 
 	 */

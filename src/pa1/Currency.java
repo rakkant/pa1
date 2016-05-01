@@ -9,10 +9,11 @@ public enum Currency implements Unit{
 	 *  This part is using for setting names of units and the value of units.
 	 * 
 	 */
-	BAHT ("Baht", 1),
-	DOLLAR ("Dollar", 34.9280),
-	YAUN ("YAUN",5.38),
-	EURO ("Euro",39.28);
+	BAHT ("THB", 0.57),
+	DOLLAR ("USD", 20.0),
+	YAUN ("CHY",27.0),
+	EURO ("EUR",20.0),
+	POUND("GBP",25.5);
 
 	/**
 	 * public property for Currency enum. It's immutable. 
