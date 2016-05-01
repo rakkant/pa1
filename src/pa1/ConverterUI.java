@@ -244,57 +244,68 @@ public class ConverterUI extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if(mnCurrency.isSelected()){
-				comboBox.removeAllItems();
-				comboBox_2.removeAllItems();
-				UnitType utype = UnitType.Currency;
-				Unit[] units = unitconverter.getUnits(utype);
-				for(Unit u : units) comboBox.addItem(u);
-				comboBox_2.addItem(u);
-			}
+			mnCurrency.isSelected();
+			comboBox.removeAllItems();
+			comboBox_2.removeAllItems();
+			UnitType utype = UnitType.Currency;
+			Unit[] units = unitconverter.getUnits(utype);
+			for(Unit u : units) comboBox.addItem(u);
+			UnitType utype2 = UnitType.Currency;
+			Unit[] units2 = unitconverter.getUnits(utype2);
+			for(Unit u : units2)
+			comboBox_2.addItem(u);
+
 		}
 	}
 
 	class ConvertChoiceWeight implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if(mnWeight.isSelected()){
-				comboBox.removeAllItems();
-				comboBox_2.removeAllItems();
-				UnitType utype = UnitType.Weight;
-				Unit[] units = unitconverter.getUnits(utype);
-				for(Unit u : units) comboBox.addItem(u);
-				for(Unit u : units2) comboBox_2.addItem(u);
-			}
+			mnWeight.isSelected();
+			comboBox.removeAllItems();
+			comboBox_2.removeAllItems();
+			UnitType utype = UnitType.Weight;
+			Unit[] units = unitconverter.getUnits(utype);
+			for(Unit u : units) comboBox.addItem(u);
+			UnitType utype2 = UnitType.Weight;
+			Unit[] units2 = unitconverter.getUnits(utype2);
+			for(Unit u : units2)
+			comboBox_2.addItem(u);
+
 		}
 	}
 
 	class ConvertChoiceArea implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if (mnArea.isSelected()){
-				comboBox.removeAllItems();
-				comboBox_2.removeAllItems();
-				UnitType utype = UnitType.Area;
-				Unit[] units = unitconverter.getUnits(utype);
-				for(Unit u : units) comboBox.addItem(u);
-				comboBox_2.addItem(u);
-			}
+			mnArea.isSelected();
+			comboBox.removeAllItems();
+			comboBox_2.removeAllItems();
+			UnitType utype = UnitType.Area;
+			Unit[] units = unitconverter.getUnits(utype);
+			for(Unit u : units) comboBox.addItem(u);
+			UnitType utype2 = UnitType.Area;
+			Unit[] units2 = unitconverter.getUnits(utype2);
+			for(Unit u : units2)
+			comboBox_2.addItem(u);
 		}
 	}
 
 	class ConvertChoiceLength implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e){
-			if (mnCurrency.isSelected()){
-				comboBox.removeAllItems();
-				comboBox_2.removeAllItems();
-				UnitType utype = UnitType.Length;
-				Unit[] units = unitconverter.getUnits(utype);
-				for(Unit u : units) comboBox.addItem(u);
-				comboBox_2.addItem(u);
-			} 
-		}
+			mnCurrency.isSelected();
+			comboBox.removeAllItems();
+			comboBox_2.removeAllItems();
+			UnitType utype = UnitType.Length;
+			Unit[] units = unitconverter.getUnits(utype);
+			for(Unit u : units) comboBox.addItem(u);
+			UnitType utype2 = UnitType.Length;
+			Unit[] units2 = unitconverter.getUnits(utype2);
+			for(Unit u : units2)
+			comboBox_2.addItem(u);
+		} 
+
 	}
 	class ConvertButtonListener implements ActionListener, KeyListener{
 		/**
