@@ -131,6 +131,11 @@ public class ConverterUI extends JFrame {
 		textField.addActionListener(convert);
 
 		comboBox = new JComboBox<Unit>();
+		UnitType utype = UnitType.Length;
+		Unit[] units = unitconverter.getUnits(utype);
+		for(Unit u : units) comboBox.addItem(u);
+		
+		
 		comboBox.addKeyListener(convertEnter);
 		contentPane.add(comboBox);
 
@@ -144,7 +149,7 @@ public class ConverterUI extends JFrame {
 		textField2.addActionListener(convert);
 
 		comboBox_2 = new JComboBox<Unit>();
-		
+		comboBox_2.addItem(u);
 		comboBox_2.addKeyListener(convertEnter);
 		contentPane.add(comboBox_2);
 
