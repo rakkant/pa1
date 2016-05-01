@@ -75,7 +75,7 @@ public class ConverterUI extends JFrame {
 	 */
 	public  ConverterUI(UnitConverter uc){
 		this.unitconverter = uc;
-		this.setTitle ("Length Converter");
+		this.setTitle ("Converter");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initComponents();
 	}
@@ -154,6 +154,9 @@ public class ConverterUI extends JFrame {
 		textField2.addActionListener(convert);
 
 		comboBox_2 = new JComboBox<Unit>();
+		UnitType utype2 = UnitType.Length;
+		Unit[] units2 = unitconverter.getUnits(utype2);
+		for(Unit u : units2)
 		comboBox_2.addItem(u);
 		comboBox_2.addKeyListener(convertEnter);
 		contentPane.add(comboBox_2);
@@ -261,7 +264,7 @@ public class ConverterUI extends JFrame {
 				UnitType utype = UnitType.Weight;
 				Unit[] units = unitconverter.getUnits(utype);
 				for(Unit u : units) comboBox.addItem(u);
-				comboBox_2.addItem(u);
+				for(Unit u : units2) comboBox_2.addItem(u);
 			}
 		}
 	}
